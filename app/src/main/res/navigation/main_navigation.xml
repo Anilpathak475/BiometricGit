@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/login_screen">
+
+    <action
+        android:id="@+id/action_global_login_screen"
+        app:destination="@id/login_screen"
+        app:popUpTo="@+id/main_navigation"
+        app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/login_screen"
+        android:name="com.anilpathak475.staxter.ui.fragments.LoginScreenFragment"
+        android:label="@string/login_screen"
+        tools:layout="@layout/login_screen_fragment">
+
+        <action
+            android:id="@+id/action_loginScreen_to_githubReposScreen"
+            app:destination="@id/github_repos_screen"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_pop_in"
+            app:popExitAnim="@anim/slide_pop_out"
+            app:popUpTo="@+id/login_screen"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/github_repos_screen"
+        android:name="com.anilpathak475.staxter.ui.fragments.GithubReposFragment"
+        android:label="@string/github_repo_list_screen"
+        tools:layout="@layout/github_repos_fragment">
+
+        <action
+            android:id="@+id/action_open_github_repo"
+            app:destination="@id/github_repo_screen"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_pop_in"
+            app:popExitAnim="@anim/slide_pop_out"></action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/github_repo_screen"
+        android:name="com.anilpathak475.staxter.ui.fragments.GithubRepoFragment"
+        android:label="@string/github_repo_screen"
+        tools:layout="@layout/github_repo_fragment">
+
+        <argument
+            android:name="githubRepoId"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
+
+</navigation>
